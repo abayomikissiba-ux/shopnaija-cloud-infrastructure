@@ -37,3 +37,29 @@ module "alb" {
   alb_security_group_id = module.security_groups.alb_security_group_id
 
 }
+
+module "iam" {
+
+  source = "./modules/iam"
+
+  project_name = var.project_name
+  environment  = var.environment
+
+}
+
+module "compute" {
+
+  source = "./modules/compute"
+
+  project_name = var.project_name
+  environment  = var.environment
+
+  private_subnet_ids = module.vpc.private_subnet_ids
+
+  ec2_security_group_id = module.security_groups.ec2_security_group_id
+
+  instance_profile_name = module.iam.instance_profile_name
+
+  target_group_arn = module.alb.target_group_arn
+
+}

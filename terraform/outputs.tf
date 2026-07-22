@@ -29,3 +29,11 @@ output "target_group_arn" {
   description = "Target Group ARN"
   value       = module.alb.target_group_arn
 }
+
+output "instance_profile_name" {
+  value = module.iam.instance_profile_name
+}
+
+output "lambda_role_arn" {
+  value = module.iam.lambda_role_arn
+}
