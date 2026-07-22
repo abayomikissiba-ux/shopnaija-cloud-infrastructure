@@ -19,3 +19,13 @@ output "vpc_id" {
 
   value = module.vpc.vpc_id
 }
+
+output "alb_dns_name" {
+  description = "Application Load Balancer DNS Name"
+  value       = module.alb.alb_dns_name
+}
+
+output "target_group_arn" {
+  description = "Target Group ARN"
+  value       = module.alb.target_group_arn
+}
