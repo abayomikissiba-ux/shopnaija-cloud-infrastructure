@@ -100,3 +100,16 @@ module "api_gateway" {
   lambda_function_name = module.lambda.lambda_function_name
 
 }
+
+module "cloudwatch" {
+
+  source = "./modules/cloudwatch"
+
+  project_name = var.project_name
+  environment  = var.environment
+
+  autoscaling_group_name = module.compute.autoscaling_group_name
+
+  db_identifier = module.rds.db_identifier
+
+}

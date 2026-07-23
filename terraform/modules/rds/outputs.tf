@@ -12,3 +12,8 @@ output "database_endpoint" {
   description = "Database endpoint"
   value       = module.rds.db_endpoint
 }
+
+output "db_identifier" {
+  description = "RDS instance identifier"
+  value       = aws_db_instance.this.identifier
+}
