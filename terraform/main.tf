@@ -63,3 +63,40 @@ module "compute" {
   target_group_arn = module.alb.target_group_arn
 
 }
+
+module "rds" {
+
+  source = "./modules/rds"
+
+  project_name = var.project_name
+  environment  = var.environment
+
+  private_subnet_ids = module.vpc.private_subnet_ids
+
+  rds_security_group_id = module.security_groups.rds_security_group_id
+
+  db_username = var.db_username
+  db_password = var.db_password
+
+}
+
+module "s3" {
+
+  source = "./modules/s3"
+
+  project_name = var.project_name
+  environment  = var.environment
+
+}
+
+module "api_gateway" {
+
+  source = "./modules/api_gateway"
+
+  project_name = var.project_name
+  environment  = var.environment
+
+  lambda_function_arn  = module.lambda.lambda_function_arn
+  lambda_function_name = module.lambda.lambda_function_name
+
+}

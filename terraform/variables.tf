@@ -46,3 +46,16 @@ variable "private_subnet_1_cidr" {
 variable "private_subnet_2_cidr" {
   type = string
 }
+
+# Database
+
+variable "db_username" {
+  description = "Database username"
+  type        = string
+}
+
+variable "db_password" {
+  description = "Database password"
+  type        = string
+  sensitive   = true
+}

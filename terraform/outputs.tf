@@ -37,3 +37,8 @@ output "instance_profile_name" {
 output "lambda_role_arn" {
   value = module.iam.lambda_role_arn
 }
+
+output "s3_bucket_name" {
+  description = "S3 bucket name"
+  value       = module.s3.bucket_name
+}
