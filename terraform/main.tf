@@ -113,3 +113,13 @@ module "cloudwatch" {
   db_identifier = module.rds.db_identifier
 
 }
+
+module "lambda" {
+
+  source = "./modules/lambda"
+
+  project_name = var.project_name
+  environment  = var.environment
+
+  lambda_role_arn = module.iam.lambda_role_arn
+}
