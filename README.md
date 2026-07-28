@@ -1,5 +1,45 @@
 # ShopNaija Cloud Infrastructure with Terraform
 
+# ShopNaija Cloud Infrastructure on AWS
+
+Production-ready cloud infrastructure deployed using Terraform on AWS.
+
+## Architecture Diagram
+
+<p align="center">
+ <img src="docs/architecture.png" alt="ShopNaija AWS Architecture" width="900">
+</p>
+
+## Architecture Overview
+
+The ShopNaija infrastructure is built using a modular Terraform architecture following AWS best practices.
+
+The solution consists of:
+
+- Amazon VPC
+- Public and Private Subnets
+- Internet Gateway
+- NAT Gateway
+- Application Load Balancer
+- EC2 Auto Scaling Group
+- Amazon RDS (MySQL)
+- Amazon S3
+- AWS Lambda
+- Amazon API Gateway
+- Amazon CloudWatch
+- IAM Roles and Instance Profiles
+
+## Request Flow
+
+1. Users access the application through the Internet.
+2. Traffic is routed to the Application Load Balancer.
+3. The Load Balancer distributes requests across EC2 instances.
+4. EC2 instances communicate with the Amazon RDS database.
+5. Product images are stored in Amazon S3.
+6. Image processing is handled by AWS Lambda.
+7. API requests are exposed through Amazon API Gateway.
+8. CloudWatch monitors the infrastructure and application performance.
+
 ## Project Overview
 
 This project provisions a secure, scalable, and highly available cloud infrastructure for **ShopNaija**, a growing e-commerce startup, using **Terraform** on **Amazon Web Services (AWS)**.
