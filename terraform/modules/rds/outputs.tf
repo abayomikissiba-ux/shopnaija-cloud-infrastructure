@@ -1,19 +1,19 @@
+output "db_identifier" {
+  description = "RDS Instance Identifier"
+  value       = aws_db_instance.this.id
+}
+
 output "db_endpoint" {
-  description = "RDS endpoint"
-  value       = aws_db_instance.this.address
+  description = "RDS Endpoint"
+  value       = aws_db_instance.this.endpoint
 }
 
 output "db_name" {
-  description = "Database name"
+  description = "Database Name"
   value       = aws_db_instance.this.db_name
 }
 
-output "database_endpoint" {
-  description = "Database endpoint"
-  value       = module.rds.db_endpoint
-}
-
-output "db_identifier" {
-  description = "RDS instance identifier"
-  value       = aws_db_instance.this.identifier
+output "db_subnet_group" {
+  description = "DB Subnet Group"
+  value       = aws_db_subnet_group.this.name
 }
