@@ -143,7 +143,3 @@ output "cpu_alarm_name" {
   value       = module.cloudwatch.cpu_alarm_name
 }
 
-output "lambda_log_group" {
-  description = "Lambda CloudWatch Log Group"
-  value       = module.cloudwatch.lambda_log_group
-}
