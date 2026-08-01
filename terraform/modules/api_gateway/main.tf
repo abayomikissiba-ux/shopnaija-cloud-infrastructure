@@ -1,3 +1,4 @@
+data "aws_region" "current" {}
 resource "aws_api_gateway_rest_api" "this" {
 
   name = "${var.project_name}-api"
@@ -40,21 +41,20 @@ resource "aws_api_gateway_integration" "lambda" {
 
   type = "AWS_PROXY"
 
-  uri = var.lambda_function_arn
+  uri = "arn:aws:apigateway:${data.aws_region.current.region}:lambda:path/2015-03-31/functions/${var.lambda_function_arn}/invocations"
 
 }
 
 resource "aws_lambda_permission" "apigateway" {
 
-  statement_id = "AllowAPIGatewayInvoke"
-
-  action = "lambda:InvokeFunction"
-
+  statement_id  = "AllowAPIGatewayInvoke"
+  action        = "lambda:InvokeFunction"
   function_name = var.lambda_function_name
+  principal     = "apigateway.amazonaws.com"
 
-  principal = "apigateway.amazonaws.com"
-
+  source_arn = "${aws_api_gateway_rest_api.this.execution_arn}/*/*"
 }
+
 
 resource "aws_api_gateway_deployment" "this" {
 

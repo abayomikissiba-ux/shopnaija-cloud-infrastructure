@@ -56,7 +56,7 @@ resource "aws_launch_template" "this" {
 
     ebs {
 
-      volume_size = 10
+      volume_size = 35
 
       volume_type = "gp3"
 
