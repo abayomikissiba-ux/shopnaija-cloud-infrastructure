@@ -282,6 +282,9 @@ Through this project, I gained hands-on experience in:
 - Multi-Region Deployment
 - Containerization with ECS or EKS
 
+## Deployment Screenshot
+
+![ShopNaija Deployment](docs/Shopnaija-deployed.png)
 
 # Author
 
